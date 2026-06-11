@@ -36,7 +36,7 @@ RUN npm ci  --omit=dev
 # TODO: Copia los archivos compilados desde la etapa de build a esta imagen.
 COPY --from=builder /app/dist ./dist
 # TODO: Corrige el comando de arranque para ejecutar el punto de entrada compilado de NestJS.
-CMD ["node", "main.js"]
+CMD ["node", "dist/main.js"]
 
 # Puerto por defecto
 EXPOSE 3000
