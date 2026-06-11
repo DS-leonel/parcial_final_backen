@@ -5,6 +5,7 @@ import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { Roles } from '../common/decorators/roles.decorator';
 import { Role } from '../common/enums/role.enum';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('estudiante')
 export class EstudianteController {
@@ -13,6 +14,7 @@ export class EstudianteController {
   @Post()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin)
+  @ApiBearerAuth()
   create(@Body() dto: CreateEstudianteDto) {
     return this.service.create(dto);
   }
