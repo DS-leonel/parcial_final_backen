@@ -31,4 +31,8 @@ export class UsersService {
     });
     return this.usersRepository.save(user);
   }
+
+  async updateAdmin(user: User): Promise<User> {
+    return this.usersRepository.save(user);
+  }
 }

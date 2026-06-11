@@ -21,6 +21,10 @@ export class DatabaseInitService implements OnModuleInit {
       await this.usersService.findByUsername(adminUsername);
 
     if (existingAdmin) {
+      if (!existingAdmin.isAdmin) {
+        existingAdmin.isAdmin = true;
+        await this.usersService.updateAdmin(existingAdmin);
+      }
       return;
     }
 
